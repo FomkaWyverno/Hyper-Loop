@@ -1,0 +1,312 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  user-select: none;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+}
+
+main {
+  height: 100%;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, p, ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+td {
+  text-align: center;
+  padding: 0;
+}
+
+.frameElement {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.frameElement__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #e8e8e8;
+  box-shadow: 0px 2px 10px #868686;
+  z-index: 1;
+}
+
+.frameElement__setting {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  height: 100%;
+}
+
+.frameElement__boxSvg {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  z-index: 2;
+}
+
+.frameElement__boxSvg svg {
+  transform: rotate(180deg);
+  transition: transform .4s ease;
+}
+
+.frameElement__boxSvg svg line {
+  transition: stroke .4s ease, stroke-width .4s ease;
+  stroke: #505050;
+}
+
+.frameElement__boxSvg:hover svg line {
+  stroke-width: 2px;
+  stroke: #000;
+}
+
+.frameElement__logotype {
+  width: 100%;
+  height: 28px;
+  margin-left: 20px;
+  background-image: url("../image/logo.svg");
+  background-repeat: no-repeat;
+  z-index: 2;
+  -webkit-app-region: drag;
+}
+
+.frameElement__controlWindow {
+  z-index: 2;
+}
+
+.controlWindowList {
+  display: flex;
+}
+
+.controlWindowList li {
+  height: 40px;
+  width: 40px;
+}
+
+.controlWindowList__close:hover {
+  background-color: #f02e2e;
+  transition: background-color .3s ease;
+}
+
+.controlWindowList__close:hover svg {
+  stroke: #fff;
+}
+
+.controlWindowList__resize rect {
+  y: 14.4;
+}
+
+.controlWindowList__resize path {
+  display: none;
+}
+
+.controlWindowList .fullscreen rect {
+  x: auto;
+}
+
+.controlWindowList .fullscreen path {
+  display: block;
+}
+
+.controlWindowList__resize:hover, .controlWindowList__rollUP:hover {
+  background-color: #cecece;
+  transition: background-color .3s ease;
+}
+
+.setting__menu {
+  display: none;
+  position: absolute;
+  background-color: #e8e8e8;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 300px;
+  left: 5px;
+  padding: 20px 15px;
+  box-shadow: 8px 8px 10px -5px #868686;
+  transition: top .6s ease;
+  z-index: -1;
+}
+
+.setting__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.setting__title, .setting__label {
+  font-family: 'Montserrat';
+}
+
+.setting__title {
+  font-size: 30px;
+}
+
+.setting__field {
+  position: relative;
+}
+
+.setting__field input {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: text;
+  width: 100%;
+  transition: border-color .4s ease;
+}
+
+.setting__field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.setting__field svg line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: all 1s ease;
+}
+
+.setting__field label {
+  cursor: text;
+}
+
+.setting #spawnXinput:focus, .setting #spawnZinput:focus {
+  border-color: #FFABD0;
+}
+
+.setting #spawnXinput:focus ~ label, .setting #spawnZinput:focus ~ label {
+  color: #FFABD0;
+  font-size: 18px;
+  bottom: 20px;
+  left: 0;
+}
+
+.setting #spawnXinput:focus ~ .setting__underline::before, .setting #spawnZinput:focus ~ .setting__underline::before {
+  transform: scale3d(1, 1, 1);
+}
+
+.setting .inputHaveValue ~ label {
+  bottom: 20px;
+  left: 0;
+}
+
+.setting__field {
+  margin-top: 15px;
+}
+
+.setting__field + .setting__field {
+  margin-top: 35px;
+}
+
+.setting__underline {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background-color: #505050;
+}
+
+.setting__underline::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #FFABD0;
+  transform: scale3d(0, 1, 1);
+  transition: transform .2s linear;
+}
+
+.setting__label {
+  position: absolute;
+  left: 5px;
+  bottom: 0;
+  font-size: 17px;
+  transition: font-size .4s ease, bottom .4s ease, left .4s ease, color .4s ease;
+}
+
+.setting .openMenu svg {
+  transform: rotate(0deg);
+}
+
+.place {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.place:active {
+  cursor: grabbing;
+}
+
+.place__cube, .place__cube2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+}
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e44747;
+}
+/*# sourceMappingURL=style.css.map */

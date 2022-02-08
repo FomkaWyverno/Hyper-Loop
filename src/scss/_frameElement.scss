@@ -1,0 +1,210 @@
+.frameElement {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    &__background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #e8e8e8;
+        box-shadow: 0px 2px 10px #868686;
+        z-index: 1;
+    }
+
+    &__setting {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        height: 100%;
+    }
+
+    &__boxSvg {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        height: 100%;
+        z-index: 2;
+        svg {
+            transform: rotate(180deg);
+            transition: transform .4s ease;
+            line {
+                transition: stroke .4s ease,
+                            stroke-width .4s ease;
+                stroke: #505050;
+            }
+        }
+        &:hover {
+            svg line {
+                stroke-width: 2px;
+                stroke: #000;
+            }
+        }
+    }
+    &__logotype {
+        width: 100%;
+        height: 28px;
+        margin-left: 20px;
+        background-image: url('../image/logo.svg');
+        background-repeat: no-repeat;
+        z-index: 2;
+        -webkit-app-region: drag;
+    }
+    &__controlWindow {
+        z-index: 2;
+    }
+}
+
+.controlWindowList {
+    display: flex;
+    li {
+        height: 40px;
+        width: 40px;
+    }
+    &__close:hover {
+        background-color: #f02e2e;
+        transition: background-color .3s ease;
+        svg {
+            stroke: #fff;
+        }
+    }
+    &__resize {
+        rect {
+            y: 14.4;
+        }
+        path {
+            display: none;
+        }
+        
+    }
+    .fullscreen {
+        rect {
+            x: auto;
+        }
+        path {
+            display: block;
+        }
+    }
+    &__resize:hover, &__rollUP:hover {
+        background-color: #cecece;
+        transition: background-color .3s ease;
+    }
+}
+.setting {
+    &__menu {
+        display: none;
+        position: absolute;
+        background-color: #e8e8e8;
+        border-radius: 15px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+        left: 5px;
+        padding: 20px 15px;
+        box-shadow: 8px 8px 10px -5px #868686;
+
+        transition: top .6s ease;
+
+        z-index: -1;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__title, &__label {
+        font-family: 'Montserrat';
+    }
+    &__title {
+        font-size: 30px;
+    }
+    &__field {
+        position: relative;
+        input {
+            background: none;
+            border: none;
+            outline: none;
+            cursor:text;
+            //border-bottom: 2px solid #bababa;
+            width: 100%;
+            transition: border-color .4s ease;
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        }
+        svg line {
+                stroke-dasharray: 100;
+                stroke-dashoffset: 100;
+                transition: all 1s ease;
+            }
+        label {
+            cursor: text;
+        }
+    }
+    #spawnXinput:focus, #spawnZinput:focus {
+        border-color: #FFABD0;
+        ~ label {
+            color: #FFABD0;
+            font-size: 18px;
+            bottom: 20px;
+            left: 0;
+        }
+        ~ .setting__underline::before {
+            transform: scale3d(1,1,1);
+        }
+    }
+    .inputHaveValue {
+        ~ label {
+            bottom: 20px;
+            left: 0;
+        }
+    }
+    &__field {
+        margin-top: 15px;
+    }
+    &__field + &__field {
+        margin-top: 35px;
+    }
+    &__underline {
+        position: relative;
+        height: 2px;
+        width: 100%;
+        background-color: #505050;
+        &::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #FFABD0;
+            transform: scale3d(0,1,1);
+
+            transition: transform .2s linear;
+        }
+    }
+    &__label {
+        position: absolute;
+        left: 5px;
+        bottom: 0;
+        font-size: 17px;
+        transition: font-size .4s ease,
+                    bottom .4s ease,
+                    left .4s ease,
+                    color .4s ease;
+    }
+
+    .openMenu {
+        svg {
+            transform: rotate(0deg);
+        }
+    }
+}

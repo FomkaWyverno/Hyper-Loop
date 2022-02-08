@@ -1,0 +1,14 @@
+{
+  "name": "hyper-loop",
+  "version": "0.0.1",
+  "description": "Program for discovery point in Hell, when calculating portal.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Fomka_Wyverno",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.2.1"
+  }
+}

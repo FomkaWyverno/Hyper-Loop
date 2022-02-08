@@ -1,0 +1,110 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Hyper Loop</title>
+    <script defer src="scripts/appScript.js"></script>
+</head>
+<body>
+    <div class="frameElement">
+        <div class="frameElement__background"></div>
+        <div class="frameElement__setting setting">
+            
+            <div class="frameElement__boxSvg">
+                <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="10.5144" y1="11.5009" x2="21.192" y2="0.823224" stroke="black" stroke-width="1.5"/>
+                    <line x1="0.176777" y1="0.823223" x2="10.8544" y2="11.5009" stroke="black" stroke-width="1.5"/>
+                </svg>
+            </div>
+            
+            <div class="setting__menu">
+                <div class="setting__form">
+                    <span class="setting__title">Position Spawn</span>
+                    <div class="setting__field">
+                        <input type="number" id="spawnXinput" class="setting__input">
+                        <label for="spawnXinput" class="setting__label">Spawn X</label>
+                        <div class="setting__underline"></div>
+                    </div>
+                    <div class="setting__field">
+                        <input type="number" id="spawnZinput" class="setting__input">
+                        <label for="spawnZinput" class="setting__label">Spawn Z</label>
+                        <div class="setting__underline"></div>
+                    </div>
+                </div>
+                <!-- Script for all fields, for check have is value if have value leave the label in place -->
+                <script>
+                        const fields = document.querySelectorAll('.setting__field');
+                        
+                        fields.forEach((element) => {
+                            const input = element.children[0];
+                            input.addEventListener('blur', () => {
+                                if (input.value != '') {
+                                    input.classList.add('inputHaveValue');
+                                } else {
+                                    input.classList.remove('inputHaveValue');
+                                }
+                            });
+                        });
+                </script>
+            </div>
+        </div>
+        <div class="frameElement__logotype"></div>
+
+        <div class="frameElement__controlWindow">
+            <ul class="controlWindowList">
+                <li class="controlWindowList__element">
+                    <div class="controlWindowList__rollUP" id="rollUpApp">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="19.6" x2="24.5" y2="19.6" stroke="black" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    
+                </li>
+                <li class="controlWindowList__element">
+                    <div class="controlWindowList__resize" data-state="0" id="resizeApp">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="12.4" y="15.4" width="11.5529" height="11.5529" stroke="black" stroke-width="0.8"/>
+                            <path d="M16 15.1167V12H27V23H23.903" stroke="black" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                </li>
+                <li class="controlWindowList__element">
+                    <div class="controlWindowList__close" id="closeApp">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="black" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="14.1768" y1="13.8232" x2="25.8806" y2="25.5271" stroke-width="0.8"/>
+                            <line x1="14.6507" y1="25.8232" x2="26.3546" y2="14.1194" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper">
+        <!-- <div class="place">
+            <div class="place__cube" style="top: 10px; left: 10px;"></div>
+            <div class="place__cube2" style="top: 100px; left: 500px;"></div>
+        </div> -->
+        <canvas class="canvas" width="100" height="100"></canvas>
+    </div>
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        heightWrapper(wrapper);
+        window.addEventListener('resize', () => {
+            heightWrapper(wrapper);
+        });
+        function heightWrapper(element) {
+            element.style.height = document.documentElement.clientHeight - 40;
+        }
+    </script>
+    <script src="./renderer.js"></script>
+    <script src="scripts/settingMenu.js"></script>
+    <script src="scripts/canvas.js"></script>
+    <!-- <script type="module" src="scripts/script.js"></script> -->
+</body>
+</html>

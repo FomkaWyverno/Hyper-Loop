@@ -1,0 +1,21 @@
+.place {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    &:active {
+        cursor: grabbing;
+    }
+    &__cube,&__cube2 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+    }
+}
+.canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e44747;
+}
